@@ -385,9 +385,9 @@
             font-weight: 600;
         }
 
-        /* ================= SEÇÃO DO ENGENHEIRO ================= */
+        /* ================= SEÇÃO DO ENGENHEIRO (CORRIGIDA PARA NÃO VAZAR) ================= */
         .perfil-engenheiro {
-            padding: 80px 5%;
+            padding: 120px 5% 80px 5%; 
             background-color: var(--fundo-cinza);
             display: flex;
             justify-content: center;
@@ -396,30 +396,40 @@
         .engenheiro-card {
             background-color: #fff;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
             display: flex;
             max-width: 1000px;
-            overflow: hidden;
+            overflow: visible; /* Muito importante para o topo da foto sair */
             flex-wrap: wrap;
+            align-items: stretch; /* Faz os dois lados terem a mesma altura */
         }
 
         .engenheiro-foto {
             flex: 1;
-            min-width: 300px;
+            min-width: 420px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* A mágica acontece aqui: cola a base da foto no fundo exato do card branco */
+            padding: 0 20px;
         }
 
         .engenheiro-foto img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 680px; /* Evita que a foto fique gigante demais */
+            height: auto;
+            margin-top: -100px; /* Puxa o topo da foto para fora do cartão */
+            margin-bottom: 0;
+            z-index: 5; 
+            object-fit: contain;
         }
 
         .engenheiro-detalhes {
             flex: 2;
-            padding: 40px;
+            padding: 50px 40px 50px 20px; /* Mais espaço para não ficar colado */
             display: flex;
             flex-direction: column;
             justify-content: center;
+            z-index: 1; 
         }
 
         .engenheiro-detalhes h2 {
@@ -434,7 +444,7 @@
             color: var(--laranja);
             font-weight: 700;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .engenheiro-badge-exp i {
@@ -444,8 +454,8 @@
         .engenheiro-detalhes p {
             color: var(--texto-claro);
             font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.7;
+            margin-bottom: 30px;
         }
 
         .selo-confianca {
@@ -456,23 +466,24 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .selo-confianca i {
-            font-size: 30px;
+            font-size: 35px;
             color: var(--azul-escuro);
         }
 
         .selo-confianca h4 {
             color: var(--azul-escuro);
-            font-size: 15px;
+            font-size: 16px;
             margin-bottom: 3px;
+            font-weight: 700;
         }
 
         .selo-confianca span {
             color: var(--texto-claro);
-            font-size: 13px;
+            font-size: 14px;
         }
 
         /* ================= RESPONSIVIDADE ================= */
@@ -500,12 +511,36 @@
                 display: none; 
             }
 
+            /* Ajustes no Pop-out para Mobile */
+            .perfil-engenheiro {
+                padding-top: 150px;
+            }
+
             .engenheiro-card {
                 flex-direction: column;
+                align-items: center;
             }
             
+            .engenheiro-foto {
+                width: 100%;
+                order: 1; 
+            }
+
             .engenheiro-foto img {
-                height: 350px;
+                max-width: 280px; /* Menor no celular para caber na tela */
+                margin-top: -120px; /* Puxa para cima para sair do topo */
+            }
+
+            .engenheiro-detalhes {
+                order: 2; 
+                padding: 10px 30px 40px 30px;
+                text-align: center;
+                align-items: center;
+            }
+
+            .selo-confianca {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -555,7 +590,7 @@
         </div>
 
         <div class="hero-image">
-            <img src="https://placehold.co/600x500/e2e8f0/0a2540?text=Sua+Imagem+3D+Aqui" alt="Ilustração Técnica de Engenharia">
+            <img src="Paginas/img/prop.png" alt="Ilustração Técnica de Engenharia">
         </div>
     </section>
 
@@ -598,7 +633,7 @@
 
         <div class="projetos-grid">
             <div class="projeto-card">
-                <img src="https://placehold.co/400x250/e2e8f0/0a2540?text=Foto+da+Obra+1" alt="Serviço 1">
+                <img src="Paginas/img/prop-in.png" alt="Serviço 1">
                 <div class="projeto-info">
                     <h3>Inspeção Estrutural - Galpão Logístico</h3>
                     <p>Avaliação completa da estrutura metálica e controle de torque nas conexões.</p>
@@ -606,7 +641,7 @@
             </div>
 
             <div class="projeto-card">
-                <img src="https://placehold.co/400x250/e2e8f0/0a2540?text=Foto+da+Obra+2" alt="Serviço 2">
+                <img src="Paginas/img/prop-in2.png" alt="Serviço 2">
                 <div class="projeto-info">
                     <h3>Validação de Impermeabilização</h3>
                     <p>Ensaio com Holiday Detector e teste de aderência em reservatório industrial.</p>
@@ -614,7 +649,7 @@
             </div>
 
             <div class="projeto-card">
-                <img src="https://placehold.co/400x250/e2e8f0/0a2540?text=Foto+da+Obra+3" alt="Serviço 3">
+                <img src="Paginas/img/prop-in3.png" alt="Serviço 3">
                 <div class="projeto-info">
                     <h3>Controle Tecnológico do Concreto</h3>
                     <p>Acompanhamento de concretagem e ensaios de resistência à compressão para edifício corporativo.</p>
@@ -635,7 +670,7 @@
                     "A JMG Engenharia nos entregou um Data Book impecável. A rastreabilidade das informações nos deu total segurança para a liberação das etapas da obra."
                 </div>
                 <div class="cliente-info">
-                    <img src="https://placehold.co/100x100/e2e8f0/0a2540?text=C1" alt="Cliente 1">
+                    <img src="Paginas/img/person1.png" alt="Cliente 1">
                     <div class="cliente-detalhes">
                         <h4>Carlos Eduardo</h4>
                         <span>Diretor de Engenharia, Construtora Alpha</span>
@@ -648,7 +683,7 @@
                     "Profissionalismo e independência técnica. Os relatórios gerados pela JMG foram cruciais para a auditoria de qualidade do nosso novo parque fabril."
                 </div>
                 <div class="cliente-info">
-                    <img src="https://placehold.co/100x100/e2e8f0/0a2540?text=C2" alt="Cliente 2">
+                    <img src="Paginas/img/person2.png" alt="Cliente 2">
                     <div class="cliente-detalhes">
                         <h4>Mariana Silva</h4>
                         <span>Gestora de Projetos Industriais</span>
@@ -661,14 +696,14 @@
     <section id="engenheiro" class="perfil-engenheiro">
         <div class="engenheiro-card">
             <div class="engenheiro-foto">
-                <img src="https://placehold.co/400x500/e2e8f0/0a2540?text=Sua+Foto+Aqui" alt="Engenheiro Responsável">
+                <img src="Paginas/img/inspiraçao-semfundo.png" alt="Engenheiro Responsável">
             </div>
             
             <div class="engenheiro-detalhes">
-                <h2>Eng. Seu Nome Aqui</h2>
+                <h2>Eng. Carlos Eugenio Lemos de Oliveira</h2>
                 
                 <div class="engenheiro-badge-exp">
-                    <i class="fa-solid fa-medal"></i> CREA/SP XXXXX-X | +10 anos de experiência
+                    <i class="fa-solid fa-medal"></i> CREA/SP 5060520334/D | +10 anos de experiência
                 </div>
                 
                 <p>Suporte técnico especializado para construtoras, indústrias, condomínios, obras corporativas e departamentos de engenharia. Foco total na entrega de informações técnicas robustas para garantir que as suas decisões estratégicas sejam sempre assertivas e seguras.</p>
