@@ -14,7 +14,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
-            scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -54,7 +54,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px;
         }
 
         .nav-links li a {
@@ -201,7 +201,7 @@
             100% { transform: translateY(0px); }
         }
 
-        /* ================= SEÇÃO SOBRE A EMPRESA & QUALIDADE ================= */
+        /* ================= SEÇÃO SOBRE A EMPRESA ================= */
         .sobre-empresa {
             padding: 80px 5%;
             background-color: #fff;
@@ -211,6 +211,7 @@
         .secao-header {
             max-width: 800px;
             margin: 0 auto 50px auto;
+            text-align: center;
         }
 
         .secao-header h2 {
@@ -270,6 +271,210 @@
             font-size: 15px;
         }
 
+        /* ================= SERVIÇOS CONCLUÍDOS ================= */
+        .projetos-realizados {
+            padding: 80px 5%;
+            background-color: var(--fundo-cinza);
+        }
+
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .projeto-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .projeto-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .projeto-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .projeto-info {
+            padding: 20px;
+        }
+
+        .projeto-info h3 {
+            font-size: 18px;
+            color: var(--azul-escuro);
+            margin-bottom: 10px;
+        }
+
+        .projeto-info p {
+            font-size: 14px;
+            color: var(--texto-claro);
+        }
+
+        /* ================= FEEDBACKS DOS CLIENTES ================= */
+        .feedbacks-clientes {
+            padding: 80px 5%;
+            background-color: #fff;
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feedback-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .balao-fala {
+            background-color: var(--azul-escuro);
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            font-size: 15px;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(10, 37, 64, 0.15);
+        }
+
+        .balao-fala::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            border-width: 15px 15px 0 0;
+            border-style: solid;
+            border-color: var(--azul-escuro) transparent transparent transparent;
+        }
+
+        .cliente-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-left: 20px;
+        }
+
+        .cliente-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .cliente-detalhes h4 {
+            color: var(--azul-escuro);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .cliente-detalhes span {
+            color: var(--laranja);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ================= SEÇÃO DO ENGENHEIRO ================= */
+        .perfil-engenheiro {
+            padding: 80px 5%;
+            background-color: var(--fundo-cinza);
+            display: flex;
+            justify-content: center;
+        }
+
+        .engenheiro-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            max-width: 1000px;
+            overflow: hidden;
+            flex-wrap: wrap;
+        }
+
+        .engenheiro-foto {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .engenheiro-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .engenheiro-detalhes {
+            flex: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .engenheiro-detalhes h2 {
+            color: var(--azul-escuro);
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .engenheiro-badge-exp {
+            display: inline-block;
+            color: var(--laranja);
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .engenheiro-badge-exp i {
+            margin-right: 5px;
+        }
+
+        .engenheiro-detalhes p {
+            color: var(--texto-claro);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .selo-confianca {
+            background-color: var(--fundo-cinza);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--laranja);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .selo-confianca i {
+            font-size: 30px;
+            color: var(--azul-escuro);
+        }
+
+        .selo-confianca h4 {
+            color: var(--azul-escuro);
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .selo-confianca span {
+            color: var(--texto-claro);
+            font-size: 13px;
+        }
+
         /* ================= RESPONSIVIDADE ================= */
         @media (max-width: 992px) {
             .hero {
@@ -294,6 +499,14 @@
             .nav-links {
                 display: none; 
             }
+
+            .engenheiro-card {
+                flex-direction: column;
+            }
+            
+            .engenheiro-foto img {
+                height: 350px;
+            }
         }
     </style>
 </head>
@@ -308,8 +521,8 @@
             <ul class="nav-links">
                 <li><a href="#">Início</a></li>
                 <li><a href="#sobre">Sobre Nós</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Diferenciais</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#engenheiro">O Engenheiro</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
@@ -372,9 +585,109 @@
             </div>
         </div>
 
-        <a href="#" class="btn-outline-azul">
-            CONHEÇA TODOS OS NOSSOS SERVIÇOS <i class="fa-solid fa-arrow-right"></i>
+        <a href="#projetos" class="btn-outline-azul">
+            VEJA NOSSOS PROJETOS <i class="fa-solid fa-arrow-down"></i>
         </a>
+    </section>
+
+    <section id="projetos" class="projetos-realizados">
+        <div class="secao-header">
+            <h2>Nosso <span>Portfólio</span></h2>
+            <p>Confira alguns dos serviços de validação técnica e inspeção que já realizamos com excelência.</p>
+        </div>
+
+        <div class="projetos-grid">
+            <div class="projeto-card">
+                <img src="https://placehold.co/400x250/e2e8f0/0a2540?text=Foto+da+Obra+1" alt="Serviço 1">
+                <div class="projeto-info">
+                    <h3>Inspeção Estrutural - Galpão Logístico</h3>
+                    <p>Avaliação completa da estrutura metálica e controle de torque nas conexões.</p>
+                </div>
+            </div>
+
+            <div class="projeto-card">
+                <img src="https://placehold.co/400x250/e2e8f0/0a2540?text=Foto+da+Obra+2" alt="Serviço 2">
+                <div class="projeto-info">
+                    <h3>Validação de Impermeabilização</h3>
+                    <p>Ensaio com Holiday Detector e teste de aderência em reservatório industrial.</p>
+                </div>
+            </div>
+
+            <div class="projeto-card">
+                <img src="https://placehold.co/400x250/e2e8f0/0a2540?text=Foto+da+Obra+3" alt="Serviço 3">
+                <div class="projeto-info">
+                    <h3>Controle Tecnológico do Concreto</h3>
+                    <p>Acompanhamento de concretagem e ensaios de resistência à compressão para edifício corporativo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="feedbacks" class="feedbacks-clientes">
+        <div class="secao-header">
+            <h2>O que dizem <span>nossos clientes</span></h2>
+            <p>A confiança do mercado é o nosso maior selo de qualidade. Veja os depoimentos de quem já validou sua obra com a gente.</p>
+        </div>
+
+        <div class="feedback-grid">
+            <div class="feedback-item">
+                <div class="balao-fala">
+                    "A JMG Engenharia nos entregou um Data Book impecável. A rastreabilidade das informações nos deu total segurança para a liberação das etapas da obra."
+                </div>
+                <div class="cliente-info">
+                    <img src="https://placehold.co/100x100/e2e8f0/0a2540?text=C1" alt="Cliente 1">
+                    <div class="cliente-detalhes">
+                        <h4>Carlos Eduardo</h4>
+                        <span>Diretor de Engenharia, Construtora Alpha</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-item">
+                <div class="balao-fala">
+                    "Profissionalismo e independência técnica. Os relatórios gerados pela JMG foram cruciais para a auditoria de qualidade do nosso novo parque fabril."
+                </div>
+                <div class="cliente-info">
+                    <img src="https://placehold.co/100x100/e2e8f0/0a2540?text=C2" alt="Cliente 2">
+                    <div class="cliente-detalhes">
+                        <h4>Mariana Silva</h4>
+                        <span>Gestora de Projetos Industriais</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="engenheiro" class="perfil-engenheiro">
+        <div class="engenheiro-card">
+            <div class="engenheiro-foto">
+                <img src="https://placehold.co/400x500/e2e8f0/0a2540?text=Sua+Foto+Aqui" alt="Engenheiro Responsável">
+            </div>
+            
+            <div class="engenheiro-detalhes">
+                <h2>Eng. Seu Nome Aqui</h2>
+                
+                <div class="engenheiro-badge-exp">
+                    <i class="fa-solid fa-medal"></i> CREA/SP XXXXX-X | +10 anos de experiência
+                </div>
+                
+                <p>Suporte técnico especializado para construtoras, indústrias, condomínios, obras corporativas e departamentos de engenharia. Foco total na entrega de informações técnicas robustas para garantir que as suas decisões estratégicas sejam sempre assertivas e seguras.</p>
+                
+                <div class="selo-confianca">
+                    <i class="fa-solid fa-shield-check"></i>
+                    <div>
+                        <h4>Foco em Resultados que Geram Confiança</h4>
+                        <span>Mais desempenho, menos risco. Conformidade e controle em cada etapa da obra.</span>
+                    </div>
+                </div>
+
+                <div class="botoes-acao" style="margin-bottom: 0;">
+                    <a href="#" class="btn-laranja">
+                        <i class="fa-brands fa-whatsapp"></i> FALAR COMIGO
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
 </body>
