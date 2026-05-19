@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMG Engenharia - Validação e Controle Tecnológico</title>
+    <link rel="icon" type="image/png" href="paginas/img/logo-semfundo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -23,6 +24,10 @@
             line-height: 1.6;
         }
 
+        section {
+            scroll-margin-top: 100px; 
+        }
+
         :root {
             --azul-escuro: #0a2540; 
             --azul-claro: #14406e;
@@ -34,7 +39,7 @@
             --fundo-cinza: #f4f6f8;
         }
 
-        /* ================= HEADER ================= */
+        /* ================= HEADER E NOVO MENU ================= */
         header {
             display: flex;
             justify-content: space-between;
@@ -51,13 +56,13 @@
             max-height: 85px; 
         }
 
-        .nav-links {
+        /* Estilos do Menu que você pediu */
+        #menu {
             display: flex;
-            list-style: none;
             gap: 25px;
         }
 
-        .nav-links li a {
+        #menu a {
             text-decoration: none;
             color: var(--azul-escuro);
             font-weight: 600;
@@ -66,8 +71,31 @@
             text-transform: uppercase;
         }
 
-        .nav-links li a:hover {
+        #menu a:hover {
             color: var(--laranja);
+        }
+
+        /* Botão Hambúrguer oculto no PC */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--azul-escuro);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         /* ================= BOTÕES ================= */
@@ -385,7 +413,7 @@
             font-weight: 600;
         }
 
-        /* ================= SEÇÃO DO ENGENHEIRO (CORRIGIDA PARA NÃO VAZAR) ================= */
+        /* ================= SEÇÃO DO ENGENHEIRO ================= */
         .perfil-engenheiro {
             padding: 120px 5% 80px 5%; 
             background-color: var(--fundo-cinza);
@@ -399,25 +427,25 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
             display: flex;
             max-width: 1000px;
-            overflow: visible; /* Muito importante para o topo da foto sair */
+            overflow: visible; 
             flex-wrap: wrap;
-            align-items: stretch; /* Faz os dois lados terem a mesma altura */
+            align-items: stretch;
         }
 
         .engenheiro-foto {
             flex: 1;
-            min-width: 420px;
+            min-width: 320px;
             display: flex;
             justify-content: center;
-            align-items: flex-end; /* A mágica acontece aqui: cola a base da foto no fundo exato do card branco */
+            align-items: flex-end; 
             padding: 0 20px;
         }
 
         .engenheiro-foto img {
             width: 100%;
-            max-width: 680px; /* Evita que a foto fique gigante demais */
+            max-width: 380px; 
             height: auto;
-            margin-top: -100px; /* Puxa o topo da foto para fora do cartão */
+            margin-top: -100px; 
             margin-bottom: 0;
             z-index: 5; 
             object-fit: contain;
@@ -425,7 +453,7 @@
 
         .engenheiro-detalhes {
             flex: 2;
-            padding: 50px 40px 50px 20px; /* Mais espaço para não ficar colado */
+            padding: 50px 40px 50px 20px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -486,7 +514,82 @@
             font-size: 14px;
         }
 
-        /* ================= RESPONSIVIDADE ================= */
+        /* ================= RODAPÉ ================= */
+        footer {
+            background-color: var(--azul-escuro);
+            color: #fff;
+            padding: 50px 5% 20px 5%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo img {
+            max-height: 70px;
+            filter: brightness(0) invert(1); 
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            font-size: 14px;
+            color: #b0b8c1;
+            max-width: 300px;
+        }
+
+        .footer-contatos p {
+            font-size: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contatos i {
+            color: var(--laranja);
+            font-size: 18px;
+        }
+
+        .footer-redes {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-redes a {
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-redes a:hover {
+            background-color: var(--laranja);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #88929e;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE (INCLUINDO MENU MOBILE) ================= */
         @media (max-width: 992px) {
             .hero {
                 flex-direction: column;
@@ -507,11 +610,35 @@
                 justify-content: center;
             }
 
-            .nav-links {
-                display: none; 
+            /* Esconde o botão grande no celular para dar espaço ao menu */
+            .btn-ocultar-mobile {
+                display: none !important;
             }
 
-            /* Ajustes no Pop-out para Mobile */
+            /* Configurações do Menu Mobile */
+            .menu-toggle {
+                display: flex; /* Mostra o ícone de hambúrguer */
+            }
+
+            #menu {
+                display: none; /* Escondido até clicar */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                padding: 20px 5%;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                text-align: center;
+                gap: 20px;
+            }
+
+            /* Classe adicionada pelo JavaScript para mostrar o menu */
+            #menu.ativo {
+                display: flex;
+            }
+
             .perfil-engenheiro {
                 padding-top: 150px;
             }
@@ -527,8 +654,8 @@
             }
 
             .engenheiro-foto img {
-                max-width: 280px; /* Menor no celular para caber na tela */
-                margin-top: -120px; /* Puxa para cima para sair do topo */
+                max-width: 280px; 
+                margin-top: -120px; 
             }
 
             .engenheiro-detalhes {
@@ -542,27 +669,40 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
         }
     </style>
 </head>
-<body>
+<body id="inicio">
 
     <header>
         <div class="logo-container">
-            <img src="Paginas/img/logo-semfundo.png" alt="JMG Engenharia Logo">
+            <a href="index.html">
+                <img src="Paginas/img/logo-semfundo.png" alt="JMG Engenharia Logo">
+            </a>
         </div>
         
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Início</a></li>
-                <li><a href="#sobre">Sobre Nós</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#engenheiro">O Engenheiro</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
+        <nav id="menu">
+            <a href="paginas/servicos/">Serviços</a>
+            <a href="paginas/sobre-nos/">Sobre Nós</a>
+            <a href="paginas/diferenciais/">Diferenciais</a>
+            <a href="paginas/contato/">Contato</a>
         </nav>
 
-        <a href="#" class="btn-laranja">SOLICITAR ORÇAMENTO <i class="fa-solid fa-chevron-right"></i></a>
+        <div class="header-actions">
+            <a href="https://wa.me/5511966406212?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20JMG%20Engenharia%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="btn-laranja btn-ocultar-mobile">SOLICITAR ORÇAMENTO <i class="fa-solid fa-chevron-right"></i></a>
+            
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </header>
 
     <section class="hero">
@@ -574,10 +714,10 @@
             <p class="desc">A JMG Engenharia é especialista em inspeção, ensaios e controle tecnológico. Entregamos soluções precisas com documentação técnica robusta para assegurar o desempenho máximo do seu empreendimento.</p>
             
             <div class="botoes-acao">
-                <a href="#" class="btn-laranja">
+                <a href="https://wa.me/5511966406212?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20engenheiro%20para%20entender%20melhor%20os%20servi%C3%A7os%20da%20JMG." target="_blank" class="btn-laranja">
                     FALAR COM UM ENGENHEIRO
                 </a>
-                <a href="#sobre" class="btn-outline-azul">
+                <a href="Paginas/sobre-nos/index.html" class="btn-outline-azul">
                     SAIBA MAIS
                 </a>
             </div>
@@ -620,8 +760,8 @@
             </div>
         </div>
 
-        <a href="#projetos" class="btn-outline-azul">
-            VEJA NOSSOS PROJETOS <i class="fa-solid fa-arrow-down"></i>
+        <a href="Paginas/servicos/index.html" class="btn-outline-azul">
+            VEJA NOSSOS PROJETOS <i class="fa-solid fa-arrow-right"></i>
         </a>
     </section>
 
@@ -717,13 +857,46 @@
                 </div>
 
                 <div class="botoes-acao" style="margin-bottom: 0;">
-                    <a href="#" class="btn-laranja">
+                    <a href="https://wa.me/5511966406212?text=Ol%C3%A1%2C%20Carlos!%20Vim%20pelo%20site%20da%20JMG%20e%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas." target="_blank" class="btn-laranja">
                         <i class="fa-brands fa-whatsapp"></i> FALAR COMIGO
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Paginas/img/logo-semfundo.png" alt="JMG Engenharia">
+                <p>Excelência em validação técnica, inspeção e controle tecnológico para a segurança da sua obra.</p>
+            </div>
+            
+            <div class="footer-contatos">
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 96640-6212</p>
+                <p><i class="fa-regular fa-envelope"></i> contato@jmgengenharia.com.br</p>
+                <p><i class="fa-solid fa-location-dot"></i> São Paulo - SP</p>
+            </div>
+
+            <div class="footer-redes">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2026 JMG Engenharia. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('ativo');
+        });
+    </script>
 
 </body>
 </html>
