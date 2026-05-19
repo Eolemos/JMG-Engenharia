@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMG Engenharia - Validação e Controle Tecnológico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ================= RESET E VARIÁVEIS ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        :root {
+            --azul-escuro: #0a2540; 
+            --azul-claro: #14406e;
+            --laranja: #ff6b00;
+            --laranja-hover: #e56000;
+            --verde-whats: #25D366;
+            --texto-escuro: #2b2b2b;
+            --texto-claro: #555;
+            --fundo-cinza: #f4f6f8;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container img {
+            max-height: 85px; 
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--azul-escuro);
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links li a:hover {
+            color: var(--laranja);
+        }
+
+        /* ================= BOTÕES ================= */
+        .btn-laranja {
+            background-color: var(--laranja);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(255, 107, 0, 0.2);
+        }
+
+        .btn-laranja:hover {
+            background-color: var(--laranja-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-azul {
+            background-color: transparent;
+            color: var(--azul-escuro);
+            border: 2px solid var(--azul-escuro);
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline-azul:hover {
+            background-color: var(--azul-escuro);
+            color: white;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #ffffff 0%, #eef2f6 100%);
+            min-height: 85vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .hero-content h1 {
+            font-size: 46px;
+            color: var(--azul-escuro);
+            line-height: 1.15;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .hero-content h1 span {
+            color: var(--laranja);
+        }
+
+        .hero-content p.subtitle {
+            font-size: 20px;
+            color: var(--azul-claro);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-content p.desc {
+            color: var(--texto-claro);
+            font-size: 16px;
+            margin-bottom: 35px;
+        }
+
+        .botoes-acao {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .features-lista {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            flex-wrap: wrap;
+            border-top: 1px solid #ddd;
+            padding-top: 25px;
+        }
+
+        .features-lista li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--azul-escuro);
+        }
+
+        .features-lista li i {
+            color: var(--laranja);
+            font-size: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            max-width: 90%;
+            height: auto;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* ================= SEÇÃO SOBRE A EMPRESA & QUALIDADE ================= */
+        .sobre-empresa {
+            padding: 80px 5%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .secao-header {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+        }
+
+        .secao-header h2 {
+            font-size: 36px;
+            color: var(--azul-escuro);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .secao-header h2 span {
+            color: var(--laranja);
+        }
+
+        .secao-header p {
+            color: var(--texto-claro);
+            font-size: 17px;
+        }
+
+        .qualidade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .qualidade-card {
+            background-color: var(--fundo-cinza);
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid transparent;
+            text-align: left;
+        }
+
+        .qualidade-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--laranja);
+            background-color: #fff;
+        }
+
+        .qualidade-card i {
+            font-size: 40px;
+            color: var(--azul-escuro);
+            margin-bottom: 20px;
+        }
+
+        .qualidade-card h3 {
+            font-size: 20px;
+            color: var(--azul-escuro);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .qualidade-card p {
+            color: var(--texto-claro);
+            font-size: 15px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 5%;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 50px;
+            }
+
+            .botoes-acao, .features-lista {
+                justify-content: center;
+            }
+
+            .hero-image {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="Paginas/img/logo-semfundo.png" alt="JMG Engenharia Logo">
+        </div>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Início</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Diferenciais</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+
+        <a href="#" class="btn-laranja">SOLICITAR ORÇAMENTO <i class="fa-solid fa-chevron-right"></i></a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Excelência em <br><span>Projetos e Validação Técnica</span></h1>
+            
+            <p class="subtitle">Conformidade normativa e rastreabilidade completa para garantir a segurança da sua obra.</p>
+            
+            <p class="desc">A JMG Engenharia é especialista em inspeção, ensaios e controle tecnológico. Entregamos soluções precisas com documentação técnica robusta para assegurar o desempenho máximo do seu empreendimento.</p>
+            
+            <div class="botoes-acao">
+                <a href="#" class="btn-laranja">
+                    FALAR COM UM ENGENHEIRO
+                </a>
+                <a href="#sobre" class="btn-outline-azul">
+                    SAIBA MAIS
+                </a>
+            </div>
+
+            <ul class="features-lista">
+                <li><i class="fa-solid fa-shield-halved"></i> Garantia de Qualidade</li>
+                <li><i class="fa-solid fa-microscope"></i> Rigor Tecnológico</li>
+                <li><i class="fa-solid fa-file-signature"></i> Laudos Normatizados</li>
+            </ul>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://placehold.co/600x500/e2e8f0/0a2540?text=Sua+Imagem+3D+Aqui" alt="Ilustração Técnica de Engenharia">
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre-empresa">
+        <div class="secao-header">
+            <h2>Por que escolher a <span>JMG Engenharia?</span></h2>
+            <p>Nosso compromisso é com a verdade estrutural. Unimos independência técnica, profissionais altamente capacitados e processos alinhados às melhores práticas do mercado da construção civil e industrial.</p>
+        </div>
+
+        <div class="qualidade-grid">
+            <div class="qualidade-card">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <h3>Controle Tecnológico</h3>
+                <p>Ensaios e inspeções realizados com equipamentos calibrados e metodologias precisas, garantindo que cada material atenda às exigências do projeto.</p>
+            </div>
+
+            <div class="qualidade-card">
+                <i class="fa-solid fa-folder-tree"></i>
+                <h3>Rastreabilidade Completa</h3>
+                <p>Registros detalhados e organizados de cada etapa do processo. Entregamos o Data Book completo para embasar as garantias da sua obra.</p>
+            </div>
+
+            <div class="qualidade-card">
+                <i class="fa-solid fa-user-tie"></i>
+                <h3>Independência Técnica</h3>
+                <p>Atuação imparcial focada exclusivamente na qualidade e segurança. Fornecemos informações confiáveis para decisões estratégicas sem conflito de interesses.</p>
+            </div>
+        </div>
+
+        <a href="#" class="btn-outline-azul">
+            CONHEÇA TODOS OS NOSSOS SERVIÇOS <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </section>
+
+</body>
+</html>
