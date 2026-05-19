@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - JMG Engenharia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ================= RESET E VARIÁVEIS (Mantidos para padrão) ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        :root {
+            --azul-escuro: #0a2540; 
+            --azul-claro: #14406e;
+            --laranja: #ff6b00;
+            --laranja-hover: #e56000;
+            --verde-whats: #25D366;
+            --texto-escuro: #2b2b2b;
+            --texto-claro: #555;
+            --fundo-cinza: #f4f6f8;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container img {
+            max-height: 85px; 
+        }
+
+        #menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        #menu a {
+            text-decoration: none;
+            color: var(--azul-escuro);
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        #menu a:hover, #menu a.ativo {
+            color: var(--laranja);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--azul-escuro);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-laranja {
+            background-color: var(--laranja);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(255, 107, 0, 0.2);
+        }
+
+        .btn-laranja:hover {
+            background-color: var(--laranja-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ================= CABEÇALHO DA PÁGINA INTERNA ================= */
+        .page-header {
+            background-color: var(--azul-escuro);
+            color: #fff;
+            padding: 80px 5%;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Efeito de sobreposição no cabeçalho */
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(10,37,64,0.9) 0%, rgba(20,64,110,0.8) 100%);
+            z-index: 1;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-header h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .page-header h1 span {
+            color: var(--laranja);
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: #d1d8e0;
+        }
+
+        /* ================= GRADE DE SERVIÇOS ================= */
+        .servicos-area {
+            padding: 80px 5%;
+            background-color: #fff;
+        }
+
+        .servicos-grid-completo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .servico-item {
+            background-color: var(--fundo-cinza);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #eef2f6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .servico-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: transparent;
+            background-color: #fff;
+        }
+
+        /* Linha laranja que aparece no hover */
+        .servico-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--laranja);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .servico-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .servico-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(10, 37, 64, 0.05);
+            color: var(--laranja);
+            font-size: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            transition: all 0.3s;
+        }
+
+        .servico-item:hover .servico-icon {
+            background-color: var(--azul-escuro);
+            color: #fff;
+        }
+
+        .servico-item h3 {
+            color: var(--azul-escuro);
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .servico-item p {
+            color: var(--texto-claro);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ================= CHAMADA PARA AÇÃO (CTA) ================= */
+        .cta-servicos {
+            background-color: var(--fundo-cinza);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .cta-box {
+            background-color: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--laranja);
+        }
+
+        .cta-box h2 {
+            color: var(--azul-escuro);
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: var(--texto-claro);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        /* ================= RODAPÉ ================= */
+        footer {
+            background-color: var(--azul-escuro);
+            color: #fff;
+            padding: 50px 5% 20px 5%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo img {
+            max-height: 70px;
+            filter: brightness(0) invert(1); 
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            font-size: 14px;
+            color: #b0b8c1;
+            max-width: 300px;
+        }
+
+        .footer-contatos p {
+            font-size: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contatos i {
+            color: var(--laranja);
+            font-size: 18px;
+        }
+
+        .footer-redes {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-redes a {
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-redes a:hover {
+            background-color: var(--laranja);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #88929e;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .btn-ocultar-mobile {
+                display: none !important;
+            }
+
+            .menu-toggle {
+                display: flex; 
+            }
+
+            #menu {
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                padding: 20px 5%;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                text-align: center;
+                gap: 20px;
+            }
+
+            #menu.ativo {
+                display: flex;
+            }
+
+            .page-header {
+                padding: 60px 5%;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .cta-box {
+                padding: 40px 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="../../index.html">
+                <img src="../../Paginas/img/logo-semfundo.png" alt="JMG Engenharia Logo">
+            </a>
+        </div>
+        
+        <nav id="menu">
+            <a href="../../index.html">Início</a>
+            <a href="#" class="ativo">Serviços</a>
+            <a href="../atuacao/index.html">Áreas de Atuação</a>
+            <a href="../parceiros/index.html">Parceiros</a>
+            <a href="../contato/index.html">Contato</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="https://wa.me/5511966406212?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20JMG%20Engenharia%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="btn-laranja btn-ocultar-mobile">SOLICITAR ORÇAMENTO <i class="fa-solid fa-chevron-right"></i></a>
+            
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Nossos <span>Serviços</span></h1>
+            <p>Soluções completas e laudos normatizados para garantir a qualidade, segurança e rastreabilidade da sua obra.</p>
+        </div>
+    </section>
+
+    <section class="servicos-area">
+        <div class="servicos-grid-completo">
+            
+            <div class="servico-item">
+                <div class="servico-icon">
+                    <i class="fa-solid fa-microscope"></i>
+                </div>
+                <h3>Controle Tecnológico</h3>
+                <p>Monitoramento rigoroso de materiais (concreto, solos, aço) garantindo que todas as exigências do projeto e normativas sejam integralmente atendidas.</p>
+            </div>
+
+            <div class="servico-item">
+                <div class="servico-icon">
+                    <i class="fa-solid fa-building-circle-check"></i>
+                </div>
+                <h3>Inspeção Estrutural</h3>
+                <p>Avaliações preventivas e corretivas em estruturas de concreto armado e estruturas metálicas, identificando patologias e assegurando a estabilidade.</p>
+            </div>
+
+            <div class="servico-item">
+                <div class="servico-icon">
+                    <i class="fa-solid fa-droplet"></i>
+                </div>
+                <h3>Validação de Impermeabilização</h3>
+                <p>Realização de testes específicos, como ensaio de Holiday Detector e testes de aderência (Pull-off), atestando a estanqueidade dos sistemas.</p>
+            </div>
+
+            <div class="servico-item">
+                <div class="servico-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h3>Liberação de Etapas</h3>
+                <p>Auditoria técnica no canteiro de obras. Fornecemos critérios técnicos claros para o avanço seguro e documentado entre as fases construtivas.</p>
+            </div>
+
+            <div class="servico-item">
+                <div class="servico-icon">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h3>Data Book e Documentação</h3>
+                <p>Rastreabilidade completa com entrega estruturada de registros organizados, garantindo segurança jurídica e suporte de garantia à sua obra.</p>
+            </div>
+
+            <div class="servico-item">
+                <div class="servico-icon">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <h3>Atendimento Educacional</h3>
+                <p>Treinamentos e capacitações no canteiro de obra para qualificar as equipes aplicadoras, elevando o nível técnico e a confiabilidade dos processos.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta-servicos">
+        <div class="cta-box">
+            <h2>Pronto para elevar o nível técnico da sua obra?</h2>
+            <p>Deixe a JMG Engenharia cuidar do controle tecnológico e da segurança normativa do seu projeto. Entre em contato e agende uma avaliação técnica.</p>
+            <a href="https://wa.me/5511966406212?text=Ol%C3%A1%2C%20estava%20na%20p%C3%A1gina%20de%20Servi%C3%A7os%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20t%C3%A9cnica." target="_blank" class="btn-laranja" style="font-size: 16px; padding: 15px 35px;">
+                <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> SOLICITAR AVALIAÇÃO TÉCNICA
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../../Paginas/img/logo-semfundo.png" alt="JMG Engenharia">
+                <p>Excelência em validação técnica, inspeção e controle tecnológico para a segurança da sua obra.</p>
+            </div>
+            
+            <div class="footer-contatos">
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 96640-6212</p>
+                <p><i class="fa-regular fa-envelope"></i> contato@jmgengenharia.com.br</p>
+                <p><i class="fa-solid fa-location-dot"></i> São Paulo - SP</p>
+            </div>
+
+            <div class="footer-redes">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2026 JMG Engenharia. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('ativo');
+        });
+    </script>
+
+</body>
+</html>
