@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviços - JMG Engenharia</title>
+    <link rel="icon" type="image/png" href="../../paginas/img/logo-semfundo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -23,6 +24,10 @@
             line-height: 1.6;
         }
 
+        section {
+            scroll-margin-top: 100px; 
+        }
+
         :root {
             --azul-escuro: #0a2540; 
             --azul-claro: #14406e;
@@ -34,7 +39,7 @@
             --fundo-cinza: #f4f6f8;
         }
 
-        /* ================= HEADER ================= */
+        /* ================= HEADER E NOVO MENU ================= */
         header {
             display: flex;
             justify-content: space-between;
@@ -51,6 +56,7 @@
             max-height: 85px; 
         }
 
+        /* Estilos do Menu que você pediu */
         #menu {
             display: flex;
             gap: 25px;
@@ -91,6 +97,7 @@
             gap: 15px;
         }
 
+        /* ================= BOTÕES ================= */
         .btn-laranja {
             background-color: var(--laranja);
             color: white;
@@ -111,6 +118,26 @@
         .btn-laranja:hover {
             background-color: var(--laranja-hover);
             transform: translateY(-2px);
+        }
+
+        .btn-outline-azul {
+            background-color: transparent;
+            color: var(--azul-escuro);
+            border: 2px solid var(--azul-escuro);
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline-azul:hover {
+            background-color: var(--azul-escuro);
+            color: white;
         }
 
         /* ================= CABEÇALHO DA PÁGINA INTERNA ================= */
@@ -392,7 +419,7 @@
     <header>
         <div class="logo-container">
             <a href="../../index.html">
-                <img src="../../Paginas/img/logo-semfundo.png" alt="JMG Engenharia Logo">
+                <img src="../../paginas/img/logo-semfundo.png" alt="JMG Engenharia Logo">
             </a>
         </div>
         
@@ -489,7 +516,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="../../Paginas/img/logo-semfundo.png" alt="JMG Engenharia">
+                <img src="../../paginas/img/logo-semfundo.png" alt="JMG Engenharia">
                 <p>Excelência em validação técnica, inspeção e controle tecnológico para a segurança da sua obra.</p>
             </div>
             
