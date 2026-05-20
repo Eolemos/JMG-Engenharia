@@ -12,7 +12,7 @@
         /* ================= RESET E VARIÁVEIS ================= */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
         body { background-color: #f8f9fa; color: #333; line-height: 1.7; overflow-x: hidden; }
-        :root { --azul-escuro: #0a2540; --laranja: #ff6b00; --fundo-cinza: #f4f6f8; --texto-claro: #555; }
+        :root { --azul-escuro: #0a2540; --laranja: #ff6b00; --laranja-hover: #e56000; --fundo-cinza: #f4f6f8; --texto-claro: #555; --borda-suave: #e2e8f0; }
 
         /* ================= HEADER ================= */
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
@@ -36,94 +36,58 @@
         .info-item i { width: 50px; height: 50px; background: var(--fundo-cinza); color: var(--laranja); display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 20px; }
         
         /* BOTÕES SOCIAIS E WHATSAPP */
-        .social-buttons { display: flex; gap: 15px; margin-top: 30px; }
-        .btn-social { padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; color: white; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .social-buttons { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .btn-social { padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: 700; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; flex: 1; min-width: 150px; }
         .btn-whatsapp { background: #25D366; }
         .btn-instagram { background: #E1306C; }
         .btn-linkedin { background: #0077b5; }
         .btn-social:hover { opacity: 0.9; transform: translateY(-3px); }
 
-        /* FORMULÁRIO */
-        .contact-form { background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        /* ================= FORMULÁRIO ================= */
+        /* A classe .contact-form precisa estar aqui para dar o fundo branco e a sombra */
+        .contact-form { background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 100%; }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--borda-suave); border-radius: 6px; font-size: 15px; }
-        .btn-enviar { background: var(--laranja); color: white; padding: 15px 30px; border: none; border-radius: 6px; width: 100%; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-enviar:hover { background: var(--laranja-hover); }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--azul-escuro); }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid var(--borda-suave); border-radius: 8px; font-size: 15px; font-family: 'Montserrat', sans-serif; background-color: var(--fundo-cinza); transition: 0.3s; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--laranja); outline: none; background-color: #fff; }
+        
+        .btn-enviar { background: var(--laranja); color: white; padding: 18px 30px; border: none; border-radius: 8px; width: 100%; font-weight: 800; font-size: 16px; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-enviar:hover { background: var(--laranja-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3); }
 
         /* ================= RODAPÉ ================= */
-        footer {
-            background-color: var(--azul-escuro);
-            color: #fff;
-            padding: 50px 5% 20px 5%;
-        }
+        footer { background-color: var(--azul-escuro); color: #fff; padding: 50px 5% 20px 5%; }
+        .footer-content { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .footer-logo img { max-height: 70px; filter: brightness(0) invert(1); margin-bottom: 15px; }
+        .footer-logo p { font-size: 14px; color: #b0b8c1; max-width: 300px; }
+        .footer-contatos p { font-size: 15px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .footer-contatos i { color: var(--laranja); font-size: 18px; }
+        .footer-redes { display: flex; gap: 15px; }
+        .footer-redes a { background-color: rgba(255,255,255,0.1); color: #fff; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 18px; transition: all 0.3s; text-decoration: none; }
+        .footer-redes a:hover { background-color: var(--laranja); transform: translateY(-3px); }
+        .copyright { margin-top: 40px; text-align: center; font-size: 13px; color: #88929e; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        /* ================= RESPONSIVIDADE (MOBILE) ================= */
+        @media (max-width: 992px) {
+            .menu-toggle { display: flex; }
+            #menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; padding: 20px 5%; box-shadow: 0 10px 15px rgba(0,0,0,0.1); text-align: center; gap: 20px; }
+            #menu.ativo { display: flex; }
+            
+            /* A mágica do mobile acontece aqui */
+            .contato-container { 
+                grid-template-columns: 1fr; /* Coloca uma coisa em cima da outra */
+                gap: 40px; 
+                padding: 60px 5%; /* Garante espaço nas laterais */
+            }
+            
+            .contact-form { 
+                padding: 30px 20px; /* Reduz o padding interno do formulário para caber no celular */
+            }
 
-        .footer-logo img {
-            max-height: 70px;
-            filter: brightness(0) invert(1); 
-            margin-bottom: 15px;
-        }
+            .btn-social {
+                width: 100%; /* Botões sociais um embaixo do outro no celular */
+            }
 
-        .footer-logo p {
-            font-size: 14px;
-            color: #b0b8c1;
-            max-width: 300px;
-        }
-
-        .footer-contatos p {
-            font-size: 15px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-contatos i {
-            color: var(--laranja);
-            font-size: 18px;
-        }
-
-        .footer-redes {
-            display: flex;
-            gap: 15px;
-        }
-
-        .footer-redes a {
-            background-color: rgba(255,255,255,0.1);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 18px;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-
-        .footer-redes a:hover {
-            background-color: var(--laranja);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 13px;
-            color: #88929e;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
+            .footer-content { flex-direction: column; text-align: center; align-items: center; }
         }
     </style>
 </head>
@@ -131,13 +95,13 @@
 
     <header>
         <div class="logo-container">
-            <a href="../../"><img src="../../paginas/img/logo-semfundo.png" alt="Logo"></a>
+            <a href="../../index.html"><img src="../../paginas/img/logo-semfundo.png" alt="Logo"></a>
         </div>
         <nav id="menu">
-            <a href="../../">Início</a>
-            <a href="../servicos/">Serviços</a>
-            <a href="../sobre-nos/">Sobre Nós</a>
-            <a href="../diferenciais/">Diferenciais</a>
+            <a href="../../index.html">Início</a>
+            <a href="../servicos/index.html">Serviços</a>
+            <a href="../sobre-nos/index.html">Sobre Nós</a>
+            <a href="../diferenciais/index.html">Diferenciais</a>
             <a href="#" class="ativo">Contato</a>
         </nav>
         <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
@@ -166,7 +130,7 @@
                 <a href="https://wa.me/5511966406212" target="_blank" class="btn-social btn-whatsapp">
                     <i class="fa-brands fa-whatsapp"></i> WhatsApp
                 </a>
-                <a href="https://www.instagram.com/eng.carlao?igsh=dnpsbWt2Y2V3bWx6" class="btn-social btn-instagram">
+                <a href="https://www.instagram.com/eng.carlao?igsh=dnpsbWt2Y2V3bWx6" target="_blank" class="btn-social btn-instagram">
                     <i class="fa-brands fa-instagram"></i> Instagram
                 </a>
                 <a href="#" class="btn-social btn-linkedin">
@@ -175,21 +139,21 @@
             </div>
         </section>
 
-    <form id="contactForm">
-        <div class="form-group">
-            <label>Nome Completo</label>
-            <input type="text" id="wa-name" placeholder="Seu nome" required>
-        </div>
-        <div class="form-group">
-            <label>E-mail</label>
-            <input type="email" id="wa-email" placeholder="seuemail@exemplo.com">
-        </div>
-        <div class="form-group">
-            <label>Mensagem</label>
-            <textarea id="wa-message" rows="5" placeholder="Como podemos ajudar em sua obra?"></textarea>
-        </div>
-    <button type="button" class="btn-enviar" onclick="sendWhatsApp()">ENVIAR MENSAGEM PELO WHATSAPP</button>
-</form>
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" id="wa-name" placeholder="Digite seu nome completo" required>
+            </div>
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" id="wa-email" placeholder="seuemail@exemplo.com">
+            </div>
+            <div class="form-group">
+                <label>Mensagem</label>
+                <textarea id="wa-message" rows="5" placeholder="Como podemos ajudar na validação da sua obra?"></textarea>
+            </div>
+            <button type="button" class="btn-enviar" onclick="sendWhatsApp()">ENVIAR PELO WHATSAPP</button>
+        </form>
     </main>
 
     <footer>
@@ -217,6 +181,7 @@
     </footer>
 
     <script>
+        // Funcionalidade do Menu Mobile
         const menuToggle = document.getElementById('menu-toggle');
         const menu = document.getElementById('menu');
 
@@ -224,35 +189,30 @@
             menu.classList.toggle('ativo');
         });
 
-function sendWhatsApp() {
-    // 1. Pegando os valores de cada campo pelo ID
-    const name = document.getElementById('wa-name').value.trim();
-    const email = document.getElementById('wa-email').value.trim();
-    const message = document.getElementById('wa-message').value.trim();
+        // Função de envio para o WhatsApp
+        function sendWhatsApp() {
+            const name = document.getElementById('wa-name').value.trim();
+            const email = document.getElementById('wa-email').value.trim();
+            const message = document.getElementById('wa-message').value.trim();
 
-    // 2. Validação simples para garantir que o nome foi preenchido
-    if (!name) {
-        alert('Por favor, digite seu nome.');
-        return;
-    }
-    if (!email) {
-        alert('Por favor, digite seu email.');
-        return;
-    }
-    if (!message) {
-        alert('Por favor, digite sua mensagem.');
-        return;
-    }
+            if (!name) {
+                alert('Por favor, digite seu nome.');
+                return;
+            }
+            if (!email) {
+                alert('Por favor, digite seu email.');
+                return;
+            }
+            if (!message) {
+                alert('Por favor, digite sua mensagem.');
+                return;
+            }
 
-    // 3. Montando a mensagem com quebras de linha (\n)
-    // O encodeURIComponent transforma esses espaços e linhas em código para a URL
-    const fullMessage = `Olá, meu nome é ${name}.\n\nE-mail: ${email}\n\nMensagem:\n${message}`;
-    const text = encodeURIComponent(fullMessage);
+            const fullMessage = `Olá, meu nome é ${name}.\n\nE-mail: ${email}\n\nMensagem:\n${message}`;
+            const text = encodeURIComponent(fullMessage);
 
-    // 4. Abrindo o link
-    window.open(`https://wa.me/5511966406212?text=${text}`, '_blank');
-}
-
+            window.open(`https://wa.me/5511966406212?text=${text}`, '_blank');
+        }
     </script>
 
 </body>
