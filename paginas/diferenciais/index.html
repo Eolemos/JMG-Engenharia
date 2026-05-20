@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferenciais | JMG Engenharia - Por que nos escolher?</title>
+    <link rel="icon" type="image/png" href="../img/logo-semfundo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ================= RESET, VARIÁVEIS E ANIMAÇÕES ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        body { background-color: #f8f9fa; color: #333; line-height: 1.7; overflow-x: hidden; }
+        section { scroll-margin-top: 100px; }
+
+        :root {
+            --azul-escuro: #0a2540; 
+            --azul-claro: #14406e;
+            --laranja: #ff6b00;
+            --laranja-hover: #e56000;
+            --verde-whats: #25D366;
+            --texto-escuro: #2b2b2b;
+            --texto-claro: #555;
+            --fundo-cinza: #f4f6f8;
+            --borda-suave: #e2e8f0;
+            --vermelho-alerta: #e74c3c;
+            --verde-sucesso: #2ecc71;
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animar-entrada { animation: fadeInUp 0.8s ease-out forwards; }
+
+        /* ================= HEADER E NAVEGAÇÃO ================= */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo-container img { max-height: 85px; transition: 0.3s; }
+        .logo-container img:hover { transform: scale(1.02); }
+        
+        #menu { display: flex; gap: 25px; }
+        #menu a { text-decoration: none; color: var(--azul-escuro); font-weight: 600; font-size: 14px; transition: color 0.3s; text-transform: uppercase; letter-spacing: 0.5px; position: relative; }
+        #menu a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--laranja); transition: 0.3s; }
+        #menu a:hover::after, #menu a.ativo::after { width: 100%; }
+        #menu a:hover, #menu a.ativo { color: var(--laranja); }
+        
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
+        .menu-toggle span { width: 25px; height: 3px; background-color: var(--azul-escuro); border-radius: 2px; transition: 0.3s; }
+        .header-actions { display: flex; align-items: center; gap: 15px; }
+
+        /* ================= BOTÕES ================= */
+        .btn-laranja { background-color: var(--laranja); color: white; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px; transition: all 0.3s; border: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 6px rgba(255, 107, 0, 0.2); text-transform: uppercase; }
+        .btn-laranja:hover { background-color: var(--laranja-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(255, 107, 0, 0.3); }
+
+        /* ================= CABEÇALHO DA PÁGINA (HERO) ================= */
+        .page-header { background-color: var(--azul-escuro); color: #fff; padding: 120px 5%; text-align: center; position: relative; overflow: hidden; }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(10,37,64,0.95) 0%, rgba(20,64,110,0.85) 100%); z-index: 1; }
+        .page-header::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://placehold.co/1920x400/0a2540/14406e?text=Diferenciais+Técnicos'); background-size: cover; background-position: center; opacity: 0.15; z-index: 0; animation: fadeIn 2s ease-in; }
+        
+        .page-header-content { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+        .page-header h1 { font-size: 52px; font-weight: 900; margin-bottom: 20px; letter-spacing: -1px; text-transform: uppercase; }
+        .page-header h1 span { color: var(--laranja); }
+        .page-header p { font-size: 20px; color: #d1d8e0; font-weight: 400; line-height: 1.8; }
+
+        /* ================= TÍTULOS DE SEÇÃO ================= */
+        .titulo-central { text-align: center; max-width: 800px; margin: 0 auto 60px auto; }
+        .titulo-central h2 { font-size: 38px; color: var(--azul-escuro); font-weight: 900; margin-bottom: 15px; text-transform: uppercase; position: relative; padding-bottom: 15px; }
+        .titulo-central h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--laranja); border-radius: 2px; }
+        .titulo-central p { color: var(--texto-claro); font-size: 18px; }
+
+        /* ================= PILARES DE EXCELÊNCIA ================= */
+        .pilares-area { padding: 100px 5%; background-color: #fff; }
+        .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        
+        .pilar-card { background: var(--fundo-cinza); padding: 50px 30px; border-radius: 15px; text-align: center; border: 1px solid var(--borda-suave); transition: 0.4s; position: relative; overflow: hidden; }
+        .pilar-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--laranja); transform: scaleX(0); transition: 0.4s; origin: left; }
+        .pilar-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); background: #fff; }
+        .pilar-card:hover::before { transform: scaleX(1); }
+        
+        .pilar-icon { width: 90px; height: 90px; background: rgba(10,37,64,0.05); color: var(--laranja); font-size: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 25px; transition: 0.4s; }
+        .pilar-card:hover .pilar-icon { background: var(--azul-escuro); color: #fff; transform: rotateY(180deg); }
+        
+        .pilar-card h3 { font-size: 22px; color: var(--azul-escuro); font-weight: 800; margin-bottom: 15px; }
+        .pilar-card p { font-size: 15px; color: var(--texto-claro); line-height: 1.7; }
+
+        /* ================= COMPARATIVO (JMG X MERCADO) ================= */
+        .comparativo-area { padding: 100px 5%; background-color: var(--azul-escuro); color: #fff; }
+        .comparativo-area .titulo-central h2 { color: #fff; }
+        .comparativo-area .titulo-central p { color: #b0b8c1; }
+
+        .vs-container { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: 0 auto; align-items: stretch; }
+        
+        .vs-card { flex: 1; min-width: 300px; background: rgba(255,255,255,0.05); border-radius: 15px; padding: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        .vs-mercado { border-top: 5px solid var(--vermelho-alerta); }
+        .vs-jmg { border-top: 5px solid var(--verde-sucesso); background: rgba(255,255,255,0.1); transform: scale(1.05); box-shadow: 0 20px 50px rgba(0,0,0,0.3); z-index: 2; position: relative; }
+        
+        .vs-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .vs-header i { font-size: 40px; margin-bottom: 15px; }
+        .vs-mercado .vs-header i { color: var(--vermelho-alerta); }
+        .vs-jmg .vs-header i { color: var(--verde-sucesso); }
+        .vs-header h3 { font-size: 24px; font-weight: 800; }
+
+        .vs-list { list-style: none; }
+        .vs-list li { margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; font-size: 15px; line-height: 1.6; }
+        .vs-mercado .vs-list i { color: var(--vermelho-alerta); margin-top: 5px; font-size: 18px; }
+        .vs-jmg .vs-list i { color: var(--verde-sucesso); margin-top: 5px; font-size: 18px; }
+
+        /* ================= DEEP DIVE (TECNOLOGIA END) ================= */
+        .tech-dive-area { padding: 100px 5%; background-color: var(--fundo-cinza); }
+        .dive-container { display: flex; flex-wrap: wrap; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+        
+        .dive-texto { flex: 1; min-width: 320px; }
+        .dive-texto h2 { font-size: 36px; color: var(--azul-escuro); font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
+        .dive-texto h2 span { color: var(--laranja); }
+        .dive-texto p { color: var(--texto-claro); font-size: 16px; margin-bottom: 20px; line-height: 1.8; }
+        
+        .check-lista { list-style: none; margin-top: 30px; }
+        .check-lista li { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-size: 16px; font-weight: 600; color: var(--azul-escuro); }
+        .check-lista i { color: var(--laranja); font-size: 20px; }
+
+        .dive-imagem { flex: 1; min-width: 320px; }
+        .dive-imagem img { width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid var(--borda-suave); }
+
+        /* ================= CTA FINAL ================= */
+        .cta-final { padding: 100px 5%; text-align: center; background-color: #fff; }
+        .cta-box { background-color: var(--azul-escuro); color: #fff; max-width: 900px; margin: 0 auto; padding: 70px 50px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; overflow: hidden; }
+        .cta-box::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,107,0,0.1) 0%, transparent 70%); z-index: 0; }
+        .cta-box h2 { position: relative; z-index: 1; font-size: 36px; font-weight: 900; margin-bottom: 20px; }
+        .cta-box p { position: relative; z-index: 1; color: #d1d8e0; font-size: 18px; margin-bottom: 40px; }
+        .cta-box .btn-laranja { position: relative; z-index: 1; font-size: 16px; padding: 18px 40px; }
+
+        /* ================= RODAPÉ ================= */
+        footer {
+            background-color: var(--azul-escuro);
+            color: #fff;
+            padding: 50px 5% 20px 5%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo img {
+            max-height: 70px;
+            filter: brightness(0) invert(1); 
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            font-size: 14px;
+            color: #b0b8c1;
+            max-width: 300px;
+        }
+
+        .footer-contatos p {
+            font-size: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contatos i {
+            color: var(--laranja);
+            font-size: 18px;
+        }
+
+        .footer-redes {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-redes a {
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-redes a:hover {
+            background-color: var(--laranja);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #88929e;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .btn-ocultar-mobile { display: none !important; }
+            .menu-toggle { display: flex; }
+            #menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; padding: 20px 5%; box-shadow: 0 10px 20px rgba(0,0,0,0.1); text-align: center; gap: 20px; }
+            #menu.ativo { display: flex; }
+            
+            .page-header { padding: 80px 5%; }
+            .page-header h1 { font-size: 38px; }
+            
+            .vs-jmg { transform: scale(1); } /* Remove o efeito 3D no celular para não quebrar a tela */
+            .vs-container { flex-direction: column; gap: 20px; }
+            
+            .dive-container { flex-direction: column; }
+            .dive-texto, .dive-imagem { width: 100%; }
+            .dive-texto { text-align: center; }
+            .check-lista li { justify-content: center; }
+
+            .cta-box { padding: 40px 20px !important; }
+            .cta-box h2 { font-size: 28px !important; }
+            .cta-box .btn-laranja { width: 100%; display: flex; justify-content: center; padding: 15px 10px !important; }
+            
+            .footer-content { flex-direction: column; text-align: left; }
+            .footer-col h4::after { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="../../"><img src="../img/logo-semfundo.png" alt="JMG Engenharia Logo"></a>
+        </div>
+        <nav id="menu">
+            <a href="../../">Início</a>
+            <a href="../servicos/">Serviços</a>
+            <a href="../sobre-nos/">Sobre Nós</a>
+            <a href="#" class="ativo">Diferenciais</a>
+            <a href="../contato/">Contato</a>
+        </nav>
+        <div class="header-actions">
+            <a href="https://wa.me/5511966406212" target="_blank" class="btn-laranja btn-ocultar-mobile">ORÇAMENTO <i class="fa-solid fa-chevron-right"></i></a>
+            <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="page-header-content animar-entrada">
+            <h1>Por que a <span>JMG?</span></h1>
+            <p>Descubra os pilares técnicos que fazem grandes construtoras confiarem suas obras à nossa equipe.</p>
+        </div>
+    </section>
+
+    <section class="pilares-area">
+        <div class="titulo-central animar-entrada">
+            <h2>Nossos Diferenciais <span>Técnicos</span></h2>
+            <p>O que nos coloca à frente no mercado de controle tecnológico e auditoria estrutural.</p>
+        </div>
+
+        <div class="pilares-grid">
+            <div class="pilar-card animar-entrada" style="animation-delay: 0.1s;">
+                <div class="pilar-icon"><i class="fa-solid fa-scale-unbalanced"></i></div>
+                <h3>Independência Absoluta</h3>
+                <p>Não vendemos insumos construtivos. Nossa isenção comercial garante que nossos laudos apontem exclusivamente a verdade técnica da sua obra, sem nenhum conflito de interesses.</p>
+            </div>
+
+            <div class="pilar-card animar-entrada" style="animation-delay: 0.2s;">
+                <div class="pilar-icon"><i class="fa-solid fa-microchip"></i></div>
+                <h3>Precisão Instrumental</h3>
+                <p>Investimos nos melhores equipamentos do mercado. Substituímos o "achismo" da inspeção visual por dados coletados através de ensaios normatizados e calibrados (RBC).</p>
+            </div>
+
+            <div class="pilar-card animar-entrada" style="animation-delay: 0.3s;">
+                <div class="pilar-icon"><i class="fa-solid fa-folder-tree"></i></div>
+                <h3>Data Book Organizado</h3>
+                <p>O pesadelo da documentação não existe com a JMG. Compilamos rastreabilidade de materiais, RDOs e laudos em um dossiê pronto para aprovações e auditorias jurídicas.</p>
+            </div>
+
+            <div class="pilar-card animar-entrada" style="animation-delay: 0.4s;">
+                <div class="pilar-icon"><i class="fa-solid fa-stopwatch"></i></div>
+                <h3>Agilidade de Resposta</h3>
+                <p>Sabemos que o cronograma de obra não pode parar. Nossa equipe emite laudos, liberações de concretagem e resultados de ensaios com extrema velocidade e confiabilidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparativo-area">
+        <div class="titulo-central">
+            <h2>JMG Engenharia <span>vs</span> Mercado</h2>
+            <p>Entenda visualmente por que a auditoria tradicional já não atende às exigências modernas de segurança.</p>
+        </div>
+
+        <div class="vs-container">
+            <div class="vs-card vs-mercado animar-entrada">
+                <div class="vs-header">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <h3>Mercado Tradicional</h3>
+                </div>
+                <ul class="vs-list">
+                    <li><i class="fa-solid fa-xmark"></i> Inspeções predominantemente visuais e subjetivas.</li>
+                    <li><i class="fa-solid fa-xmark"></i> Conflito de interesse (a mesma empresa que vende o produto, o fiscaliza).</li>
+                    <li><i class="fa-solid fa-xmark"></i> Documentação desorganizada, entregue apenas no final da obra.</li>
+                    <li><i class="fa-solid fa-xmark"></i> Testes de impermeabilização feitos apenas "inundando" o local (demorado).</li>
+                    <li><i class="fa-solid fa-xmark"></i> Ensaios estruturais que exigem a quebra excessiva do concreto.</li>
+                </ul>
+            </div>
+
+            <div class="vs-card vs-jmg animar-entrada" style="animation-delay: 0.3s;">
+                <div class="vs-header">
+                    <i class="fa-solid fa-shield-check"></i>
+                    <h3>Padrão JMG Engenharia</h3>
+                </div>
+                <ul class="vs-list">
+                    <li><i class="fa-solid fa-check"></i> Inspeções baseadas em instrumentação e coleta de dados reais.</li>
+                    <li><i class="fa-solid fa-check"></i> 100% de isenção técnica. Nosso único produto é a segurança.</li>
+                    <li><i class="fa-solid fa-check"></i> Data Book contínuo, garantindo a rastreabilidade diária da obra.</li>
+                    <li><i class="fa-solid fa-check"></i> Validação de estanqueidade imediata com Holiday Detector (Alta Tensão).</li>
+                    <li><i class="fa-solid fa-check"></i> Prioridade em Ensaios Não-Destrutivos (END) via Ultrassom e Pacometria.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-dive-area">
+        <div class="dive-container">
+            <div class="dive-texto animar-entrada">
+                <h2>Engenharia Inteligente com <span>Ensaios Não-Destrutivos (END)</span></h2>
+                <p>O maior temor de um construtor ao chamar uma auditoria é precisar quebrar elementos estruturais já finalizados para avaliação. A JMG minimiza esse impacto.</p>
+                <p>Através dos Ensaios Não-Destrutivos, conseguimos "enxergar" dentro do concreto e analisar a integridade de fundações, pilares e lajes sem comprometer a estrutura existente.</p>
+                
+                <ul class="check-lista">
+                    <li><i class="fa-solid fa-circle-check"></i> Mapeamento de armaduras (Pacometria)</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Avaliação de dureza superficial (Esclerometria)</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Detecção de falhas de concretagem (Ultrassom)</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Agilidade na liberação de laudos técnicos</li>
+                </ul>
+            </div>
+            <div class="dive-imagem animar-entrada" style="animation-delay: 0.3s;">
+                <img src="https://placehold.co/600x450/e2e8f0/0a2540?text=Equipamentos+de+Alta+Precisão" alt="Engenheiro operando pacômetro">
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="cta-box animar-entrada">
+            <h2>Não conte com a sorte. Conte com dados.</h2>
+            <p>Blinde o seu investimento com quem entende de controle tecnológico normatizado.</p>
+            <a href="https://wa.me/5511966406212?text=Ol%C3%A1%2C%20estava%20vendo%20os%20diferenciais%20da%20JMG%20e%20gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o%20t%C3%A9cnica." target="_blank" class="btn-laranja">
+                <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> AGENDAR AVALIAÇÃO TÉCNICA
+            </a>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../img/logo-semfundo.png" alt="JMG Engenharia">
+                <p>Excelência em validação técnica, inspeção e controle tecnológico para a segurança da sua obra.</p>
+            </div>
+            
+            <div class="footer-contatos">
+                <p><i class="fa-brands fa-whatsapp"></i> (11) 96640-6212</p>
+                <p><i class="fa-regular fa-envelope"></i> carlao.engcivil@gmail.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> São Paulo - SP</p>
+            </div>
+
+            <div class="footer-redes">
+                <a href="https://www.instagram.com/eng.carlao?igsh=dnpsbWt2Y2V3bWx6" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div> 
+        <div class="copyright">
+            &copy; 2026 JMG Engenharia. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('ativo');
+        });
+    </script>
+
+
+</body>
+</html>
